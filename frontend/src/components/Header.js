@@ -27,15 +27,15 @@ const Header = () => {
           <div className="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
             <a
               href="#"
-              className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
+              className="whitespace-nowrap text-base  text-gray-700 hover:text-gray-900"
             >
-              <i className="fas fa-shopping-cart"></i> CART
+              <i class="fas fa-shopping-cart"></i>
             </a>
             <a
               href="#"
-              className="ml-8 whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
+              className="ml-8 whitespace-nowrap text-base  text-gray-700 hover:text-gray-900"
             >
-              <i className="fas fa-user"></i> SIGN UP
+              <i className="far fa-user"></i> Sign In
             </a>
           </div>
         </div>
@@ -75,15 +75,15 @@ const Header = () => {
             <div className="items-center justify-end md:flex md:flex-1 lg:w-0 p-4">
               <a
                 href="#"
-                className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
+                className="whitespace-nowrap text-base  text-gray-700 hover:text-gray-900"
               >
-                <i className="fas fa-shopping-cart"></i> CART
+                <i className="fas fa-shopping-cart"></i>
               </a>
               <a
                 href="#"
-                className="ml-8 whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
+                className="ml-8 whitespace-nowrap text-base text-gray-700 hover:text-gray-900"
               >
-                <i className="fas fa-user"></i> SIGN UP
+                <i className="far fa-user"></i> Sign In
               </a>
             </div>
           </div>
