@@ -1,4 +1,5 @@
 import React from "react";
+import Rating from "./Rating";
 
 const Product = ({ product }) => {
   return (
@@ -23,11 +24,11 @@ const Product = ({ product }) => {
           </h2>
           {/* product price */}
           <div style={{ width: "248px", height: "52px" }}>
-            <span className="text-[14px]">Tk {product.price}</span>
+            <span className="text-[14px]">&#2547; {product.price}</span>
             {product.discount > 0 ? (
               <div className="flex items-center gap-2 mt-1">
                 <span className="text-sm line-through opacity-50">
-                  Tk{" "}
+                  &#2547;{" "}
                   {Math.round(
                     product.price + (product.discount / 100) * product.price
                   )}
@@ -41,16 +42,10 @@ const Product = ({ product }) => {
             )}
           </div>
           {/* product rating */}
-          <span>
-            <i className="fas fa-star text-lightning-yellow-500 text-[14px]"></i>
-            <i className="fas fa-star text-lightning-yellow-500 text-[14px]"></i>
-            <i className="fas fa-star text-lightning-yellow-500 text-[14px]"></i>
-            <i className="fas fa-star-half-alt text-lightning-yellow-500 text-[14px]"></i>
-            <i className="fas fa-star-half-alt text-lightning-yellow-500 text-[14px]"></i>
-            <span className="text-xs ml-2 text-gray-500">
-              {product.numReviews} reviews
-            </span>
-          </span>
+          <Rating
+            value={product.rating}
+            text={`${product.numReviews} reviews`}
+          />
 
           {/* product action button */}
           <div className="flex gap-2">
