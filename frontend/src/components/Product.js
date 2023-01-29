@@ -1,60 +1,75 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 const Product = ({ product }) => {
-  // Truncating product name
-  function truncateString(str, num) {
-    if (num >= str.length) return str;
-    if (num <= 55) return str.slice(0, num) + " ...";
-    return str.slice(0, num) + " ...";
-  }
   return (
-    <div className="max-w-sm bg-white px-6 pt-6 pb-2 rounded-xl shadow-lg transform hover:scale-105 transition duration-500">
-      <div className="relative">
-        <img className="w-full rounded-xl" src={product.image} alt="Colors" />
-        {product.discount > 0 ? (
-          <p className="absolute top-0 right-0 bg-yellow-300 text-gray-800 font-semibold py-1 px-3 rounded-tr-lg rounded-bl-lg">
-            %{product.discount} Discount
-          </p>
-        ) : (
-          ""
-        )}
-      </div>
-      <Link
-        to={`/product/${product._id}`}
-        style={{ width: "336px", height: "56px" }}
-        className="mt-4 text-gray-800 text-lg font-bold cursor-pointer"
-      >
-        {truncateString(product.name, 55)}
-      </Link>
-      <div className="mb-4">
-        <div className="flex items-center justify-between">
-          <p className="text-gray-600 font-bold text-sm ml-1">
-            <i className="fas fa-star text-lightning-yellow-500 text-sm"></i>{" "}
-            {product.rating}
-            <span className="text-gray-500 font-normal">
-              {" "}
-              ({product.numReviews} reviews)
+    <div className="max-w-sm bg-white px-6 pt-6 pb-2">
+      {/* card */}
+      <div className="bg-white text-gray-700 w-72 min-h-[10rem] shadow-lg rounded-md overflow-hidden">
+        <img
+          className="w-full h-full object-cover"
+          src="/images/headphone.jpg"
+          alt=""
+        />
+        <div className="p-5 flex flex-col gap-3">
+          {/* badge */}
+          <div className="flex items-center gap-2">
+            <span className="px-3 py-1 rounded-full text-xs bg-gray-100">
+              stock ready
             </span>
-          </p>
-          <button className="text-sm font-medium hover:text-gray-900 p-2 text-gray-700 bg-indigo-100 rounded">
-            Add to Cart
-          </button>
-        </div>
-        <div className="flex items-center">
-          <p className="text-gray-600 font-bold text-lg ml-1">
-            Tk.{product.price}{" "}
+            <span className="px-3 py-1 rounded-full text-xs bg-gray-100">
+              official store
+            </span>
+          </div>
+          {/* product title */}
+          <h2
+            className="font-semibold text-xl overflow-ellipsis overflow-hidden whitespace-nowrap"
+            title={product.name}
+          >
+            {product.name}
+          </h2>
+          {/* product price */}
+          <div style={{ width: "248px", height: "52px" }}>
+            <span className="text-lg font-bold">Tk {product.price}</span>
             {product.discount > 0 ? (
-              <span className="font-normal text-gray-600 text-base line-through">
-                {" "}
-                {Math.round(
-                  product.price + (product.discount / 100) * product.price
-                )}
-              </span>
+              <div className="flex items-center gap-2 mt-1">
+                <span className="text-sm line-through opacity-50">
+                  Tk{" "}
+                  {Math.round(
+                    product.price + (product.discount / 100) * product.price
+                  )}
+                </span>
+                <span className="bg-green-400 px-1.5 py-0.5 rounded-md text-xs text-white">
+                  save {product.discount}%
+                </span>
+              </div>
             ) : (
               ""
             )}
-          </p>
+          </div>
+          {/* product rating */}
+          <span>
+            <i className="fas fa-star text-lightning-yellow-500"></i>
+            <i className="fas fa-star text-lightning-yellow-500"></i>
+            <i className="fas fa-star text-lightning-yellow-500"></i>
+            <i className="fas fa-star-half-alt text-lightning-yellow-500"></i>
+            <i className="fas fa-star-half-alt text-lightning-yellow-500"></i>
+            <span className="text-xs ml-2 text-gray-500">
+              {product.numReviews} reviews
+            </span>
+          </span>
+
+          {/* product action button */}
+          <div className="mt-5 flex gap-2">
+            <button className="bg-[#063970] hover:bg-[#032d5a] px-6 py-2 rounded-md text-white font-medium tracking-wider transition">
+              Add to cart
+            </button>
+            <button className="flex-grow flex justify-center items-center bg-gray-300/60 hover:bg-gray-300/80 transition rounded-md">
+              <i className="fas fa-heart opacity-50"></i>
+            </button>
+            <button className="flex-grow flex justify-center items-center bg-gray-300/60 hover:bg-gray-300/80 transition rounded-md">
+              <i className="fas fa-eye opacity-50"></i>
+            </button>
+          </div>
         </div>
       </div>
     </div>
