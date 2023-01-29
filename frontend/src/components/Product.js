@@ -1,27 +1,31 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Rating from "./Rating";
 
 const Product = ({ product }) => {
   return (
     <div className="relative">
       <div className="relative w-full min-h-[10rem] overflow-hidden rounded-lg">
-        <img
-          src={
-            "/images/Pantene Essential Botanicals Volumizing Shampoo Rosemary & Lemon -1.13L.jfif"
-          }
-          alt=""
-          className="w-full h-full object-cover object-center"
-        />
+        <Link to={`/product/${product._id}`}>
+          <img
+            src={
+              "/images/Pantene Essential Botanicals Volumizing Shampoo Rosemary & Lemon -1.13L.jfif"
+            }
+            alt=""
+            className="w-full h-full object-cover object-center"
+          />
+        </Link>
       </div>
       <div className="relative mt-4">
         <div className="flex flex-col gap-3">
           {/* product title */}
-          <h2
-            className="text-[14px] overflow-ellipsis overflow-hidden whitespace-nowrap"
+          <Link
+            to={`/product/${product._id}`}
+            className="text-[14px] overflow-ellipsis overflow-hidden whitespace-nowrap link link-underline link-underline-black text-black"
             title={product.name}
           >
             {product.name}
-          </h2>
+          </Link>
           {/* product price */}
           <div style={{ width: "248px", height: "52px" }}>
             <span className="text-[14px]">&#2547; {product.price}</span>
