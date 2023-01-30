@@ -112,17 +112,17 @@ const Header = () => {
               </div>
               <div className="hidden lg:relative lg:z-10 lg:ml-4 lg:flex lg:items-center">
                 {/* Shopping bag */}
-                <div class="ml-4 flow-root lg:ml-8">
+                <div className="ml-4 flow-root lg:ml-8">
                   <span className="sr-only">Shopping bag</span>
-                  <a href="#" class="group -m-2 flex items-center p-2">
+                  <a href="#" className="group -m-2 flex items-center p-2">
                     <ShoppingBagIcon
-                      class="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+                      className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
                       aria-hidden="true"
                     />
-                    <span class="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
+                    <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
                       0
                     </span>
-                    <span class="sr-only">items in cart, view bag</span>
+                    <span className="sr-only">items in cart, view bag</span>
                   </a>
                 </div>
 
@@ -232,15 +232,15 @@ const Header = () => {
                   className="ml-auto flex-shrink-0 rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                 >
                   <span className="sr-only">Shopping bag</span>
-                  <a href="#" class="group -m-2 flex items-center p-2">
+                  <a href="#" className="group -m-2 flex items-center p-2">
                     <ShoppingBagIcon
-                      class="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+                      className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
                       aria-hidden="true"
                     />
-                    <span class="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
+                    <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
                       0
                     </span>
-                    <span class="sr-only">items in cart, view bag</span>
+                    <span className="sr-only">items in cart, view bag</span>
                   </a>
                 </button>
               </div>
