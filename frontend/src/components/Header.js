@@ -2,6 +2,7 @@ import React from "react";
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import {
+  ChevronDownIcon,
   MagnifyingGlassIcon,
   ShoppingBagIcon,
 } from "@heroicons/react/20/solid";
@@ -33,6 +34,39 @@ const Header = () => {
     <Disclosure as="header" className="bg-white shadow">
       {({ open }) => (
         <>
+          {/* Top navigation */}
+          <div className="bg-gray-900">
+            <div className="mx-auto flex h-10 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+              {/* Contact Information */}
+              <div>
+                <div>
+                  <label htmlFor="contact-number" className="sr-only">
+                    Contact Information
+                  </label>
+                  <div className="flex items-center space-x-6">
+                    <span className="text-sm font-medium text-white hover:text-gray-100">
+                      <i className="fas fa-phone"></i> +88 01706 536039
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex items-center space-x-6">
+                <a
+                  href="#"
+                  className="text-sm font-medium text-white hover:text-gray-100"
+                >
+                  Sign in
+                </a>
+                <a
+                  href="#"
+                  className="text-sm font-medium text-white hover:text-gray-100"
+                >
+                  Create an account
+                </a>
+              </div>
+            </div>
+          </div>
           <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:divide-y lg:divide-gray-200 lg:px-8">
             <div className="relative flex h-16 justify-between">
               <div className="relative z-10 flex px-2 lg:px-0">
