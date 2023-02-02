@@ -6,31 +6,12 @@ import {
   ShoppingBagIcon,
 } from "@heroicons/react/20/solid";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Link } from "react-router-dom";
+import CustomLink from "./CustomLink";
 
 const Header = () => {
-  const user = {
-    name: "Tom Cook",
-    email: "tom@example.com",
-    imageUrl:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  };
-  const navigation = [
-    { name: "Home", href: "#", current: true },
-    { name: "Categories", href: "#", current: false },
-    { name: "Brands", href: "#", current: false },
-    { name: "Shop", href: "#", current: false },
-  ];
-  const userNavigation = [
-    { name: "Your Profile", href: "#" },
-    { name: "Settings", href: "#" },
-    { name: "Sign out", href: "#" },
-  ];
-
-  function classNames(...classes) {
-    return classes.filter(Boolean).join(" ");
-  }
   return (
-    <Disclosure as="header" className="bg-white shadow">
+    <Disclosure as="header" className="navbar sticky top-0 z-50 bg-white">
       {({ open }) => (
         <>
           {/* Top navigation */}
@@ -70,11 +51,13 @@ const Header = () => {
             <div className="relative flex h-16 justify-between">
               <div className="relative z-10 flex px-2 lg:px-0">
                 <div className="flex flex-shrink-0 items-center">
-                  <img
-                    className="block h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                    alt="Your Company"
-                  />
+                  <Link to="/">
+                    <img
+                      className="block h-8 w-auto"
+                      src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                      alt="Your Company"
+                    />
+                  </Link>
                 </div>
               </div>
               <div className="relative z-0 flex flex-1 items-center justify-center px-2 sm:absolute sm:inset-0">
@@ -133,7 +116,7 @@ const Header = () => {
                       <span className="sr-only">Open user menu</span>
                       <img
                         className="h-8 w-8 rounded-full"
-                        src={user.imageUrl}
+                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                         alt=""
                       />
                     </Menu.Button>
@@ -148,21 +131,15 @@ const Header = () => {
                     leaveTo="transform opacity-0 scale-95"
                   >
                     <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                      {userNavigation.map((item) => (
-                        <Menu.Item key={item.name}>
-                          {({ active }) => (
-                            <a
-                              href={item.href}
-                              className={classNames(
-                                active ? "bg-gray-100" : "",
-                                "block py-2 px-4 text-sm text-gray-700"
-                              )}
-                            >
-                              {item.name}
-                            </a>
-                          )}
-                        </Menu.Item>
-                      ))}
+                      <Menu.Item>
+                        <CustomLink to="/categories">Your Profile</CustomLink>
+                      </Menu.Item>
+                      <Menu.Item>
+                        <CustomLink to="/brands">Settings</CustomLink>
+                      </Menu.Item>
+                      <Menu.Item>
+                        <CustomLink to="/shop">Sign out</CustomLink>
+                      </Menu.Item>
                     </Menu.Items>
                   </Transition>
                 </Menu>
@@ -172,58 +149,37 @@ const Header = () => {
               className="hidden lg:flex lg:space-x-8 lg:py-2"
               aria-label="Global"
             >
-              {navigation.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className={classNames(
-                    item.current
-                      ? "bg-gray-100 text-gray-900"
-                      : "text-gray-900 hover:bg-gray-50 hover:text-gray-900",
-                    "rounded-md py-2 px-3 inline-flex items-center text-sm font-medium"
-                  )}
-                  aria-current={item.current ? "page" : undefined}
-                >
-                  {item.name}
-                </a>
-              ))}
+              <CustomLink to="/">Home</CustomLink>
+              <CustomLink to="/categories">Categories</CustomLink>
+              <CustomLink to="/brands">Brands</CustomLink>
+              <CustomLink to="/shop">Shop</CustomLink>
             </nav>
           </div>
 
           <Disclosure.Panel as="nav" className="lg:hidden" aria-label="Global">
             <div className="space-y-1 px-2 pt-2 pb-3">
-              {navigation.map((item) => (
-                <Disclosure.Button
-                  key={item.name}
-                  as="a"
-                  href={item.href}
-                  className={classNames(
-                    item.current
-                      ? "bg-gray-100 text-gray-900"
-                      : "text-gray-900 hover:bg-gray-50 hover:text-gray-900",
-                    "block rounded-md py-2 px-3 text-base font-medium"
-                  )}
-                  aria-current={item.current ? "page" : undefined}
-                >
-                  {item.name}
-                </Disclosure.Button>
-              ))}
+              <Disclosure.Button>
+                <CustomLink to="/">Home</CustomLink>
+                <CustomLink to="/categories">Categories</CustomLink>
+                <CustomLink to="/brands">Brands</CustomLink>
+                <CustomLink to="/shop">Shop</CustomLink>
+              </Disclosure.Button>
             </div>
             <div className="border-t border-gray-200 pt-4 pb-3">
               <div className="flex items-center px-4">
                 <div className="flex-shrink-0">
                   <img
                     className="h-10 w-10 rounded-full"
-                    src={user.imageUrl}
+                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                     alt=""
                   />
                 </div>
                 <div className="ml-3">
                   <div className="text-base font-medium text-gray-800">
-                    {user.name}
+                    John Doe
                   </div>
                   <div className="text-sm font-medium text-gray-500">
-                    {user.email}
+                    johndoe@email.com
                   </div>
                 </div>
                 {/* Shopping bag */}
@@ -245,16 +201,11 @@ const Header = () => {
                 </button>
               </div>
               <div className="mt-3 space-y-1 px-2">
-                {userNavigation.map((item) => (
-                  <Disclosure.Button
-                    key={item.name}
-                    as="a"
-                    href={item.href}
-                    className="block rounded-md py-2 px-3 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900"
-                  >
-                    {item.name}
-                  </Disclosure.Button>
-                ))}
+                <Disclosure.Button>
+                  <CustomLink to="/categories">Your Profile</CustomLink>
+                  <CustomLink to="/brands">Settings</CustomLink>
+                  <CustomLink to="/shop">Sign out</CustomLink>
+                </Disclosure.Button>
               </div>
             </div>
           </Disclosure.Panel>

@@ -8,9 +8,7 @@ const Product = ({ product }) => {
       <div className="relative w-full min-h-[10rem] overflow-hidden rounded-lg">
         <Link to={`/product/${product._id}`}>
           <img
-            src={
-              "/images/Pantene Essential Botanicals Volumizing Shampoo Rosemary & Lemon -1.13L.jfif"
-            }
+            src={product.cover}
             alt=""
             className="w-full h-full object-cover object-center"
           />
