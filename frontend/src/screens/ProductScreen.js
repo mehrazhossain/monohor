@@ -87,7 +87,7 @@ const ProductScreen = () => {
 
   return (
     <div className="bg-white">
-      <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+      <div className="mx-auto max-w-2xl py-16 px-4 lg:py-3 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
         <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8">
           {/* Image gallery */}
           <Tab.Group as="div" className="flex flex-col-reverse">
@@ -145,7 +145,7 @@ const ProductScreen = () => {
             <div className="mt-3">
               <h2 className="sr-only">Product information</h2>
               <p className="text-3xl tracking-tight text-gray-900">
-                {product.price}
+                {product.price}&#2547;
               </p>
             </div>
 
@@ -176,7 +176,7 @@ const ProductScreen = () => {
               <div className="sm:flex-col1 mt-10 flex">
                 <button
                   type="submit"
-                  className="flex max-w-xs flex-1 items-center justify-center rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full"
+                  className="flex max-w-xs flex-1 items-center justify-center rounded-md border border-transparent bg-gray-900 py-3 px-8 text-base font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-200 focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full"
                 >
                   Add to bag
                 </button>
