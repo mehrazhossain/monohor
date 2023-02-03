@@ -1,81 +1,9 @@
-import { useState } from "react";
-import { Disclosure, RadioGroup, Tab } from "@headlessui/react";
-import { StarIcon } from "@heroicons/react/20/solid";
+import { useEffect, useState } from "react";
+import { Disclosure, Tab } from "@headlessui/react";
 import { HeartIcon, MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
-import { useParams } from "react-router-dom";
-import products from "../products";
-import Magnifier from "react-glass-magnifier";
+import { Link, useParams } from "react-router-dom";
 import Rating from "../components/Rating";
-
-// const product = {
-//   name: "Zip Tote Basket",
-//   price: "$140",
-//   rating: 4,
-//   images: [
-//     {
-//       id: 1,
-//       name: "Angled view",
-//       src: "https://tailwindui.com/img/ecommerce-images/product-page-03-product-01.jpg",
-//       alt: "Angled front view with bag zipped and handles upright.",
-//     },
-//     {
-//       id: 1,
-//       name: "Angled view",
-//       src: "https://tailwindui.com/img/ecommerce-images/product-page-03-product-01.jpg",
-//       alt: "Angled front view with bag zipped and handles upright.",
-//     },
-//     {
-//       id: 1,
-//       name: "Angled view",
-//       src: "/images/headphone.jpg",
-//       alt: "Angled front view with bag zipped and handles upright.",
-//     },
-//     // More images...
-//   ],
-//   colors: [
-//     {
-//       name: "Washed Black",
-//       bgColor: "bg-gray-700",
-//       selectedColor: "ring-gray-700",
-//     },
-//     { name: "White", bgColor: "bg-white", selectedColor: "ring-gray-400" },
-//     {
-//       name: "Washed Gray",
-//       bgColor: "bg-gray-500",
-//       selectedColor: "ring-gray-500",
-//     },
-//   ],
-//   description: `
-//     <p>The Zip Tote Basket is the perfect midpoint between shopping tote and comfy backpack. With convertible straps, you can hand carry, should sling, or backpack this convenient and spacious bag. The zip top and durable canvas construction keeps your goods protected for all-day use.</p>
-//   `,
-//   details: [
-//     {
-//       name: "Features",
-//       items: [
-//         "Multiple strap configurations",
-//         "Spacious interior with top zip",
-//         "Leather handle and tabs",
-//         "Interior dividers",
-//         "Stainless strap loops",
-//         "Double stitched construction",
-//         "Water-resistant",
-//       ],
-//     },
-//     {
-//       name: "Features",
-//       items: [
-//         "Multiple strap configurations",
-//         "Spacious interior with top zip",
-//         "Leather handle and tabs",
-//         "Interior dividers",
-//         "Stainless strap loops",
-//         "Double stitched construction",
-//         "Water-resistant",
-//       ],
-//     },
-//     // More sections...
-//   ],
-// };
+import axios from "axios";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -83,18 +11,34 @@ function classNames(...classes) {
 
 const ProductScreen = () => {
   let { id } = useParams();
-  const product = products.find((p) => p._id === id);
+
+  const [product, setProduct] = useState({});
+  useEffect(() => {
+    const fetchProduct = async () => {
+      const { data } = await axios.get(`/api/products/${id}`);
+      setProduct(data);
+    };
+    fetchProduct();
+  }, [id]);
 
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-2xl py-16 px-4 lg:py-3 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+        <Link to="/">
+          <button
+            type="button"
+            class="ml-4 flex items-center justify-center rounded-md py-3 px-3 text-gray-800 hover:bg-gray-100 hover:text-gray-1000"
+          >
+            Go back
+          </button>
+        </Link>
         <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8">
           {/* Image gallery */}
           <Tab.Group as="div" className="flex flex-col-reverse">
             {/* Image selector */}
             <div className="mx-auto mt-6 hidden w-full max-w-2xl sm:block lg:max-w-none">
               <Tab.List className="grid grid-cols-4 gap-6">
-                {product.images.map((image) => (
+                {product?.images?.map((image) => (
                   <Tab
                     key={image.id}
                     className="relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-opacity-50 focus:ring-offset-4"
@@ -124,7 +68,7 @@ const ProductScreen = () => {
             </div>
 
             <Tab.Panels className="aspect-w-1 aspect-h-1 w-full">
-              {product.images.map((image) => (
+              {product?.images?.map((image) => (
                 <Tab.Panel key={image.id}>
                   <img
                     src={image.src}
@@ -200,7 +144,7 @@ const ProductScreen = () => {
               </h2>
 
               <div className="divide-y divide-gray-200 border-t">
-                {product.details.map((detail) => (
+                {product?.details?.map((detail) => (
                   <Disclosure as="div" key={detail.name}>
                     {({ open }) => (
                       <>
@@ -233,8 +177,8 @@ const ProductScreen = () => {
                           as="div"
                           className="prose prose-sm pb-6"
                         >
-                          <ul role="list">
-                            {detail.items.map((item) => (
+                          <ul>
+                            {detail.items?.map((item) => (
                               <li key={item}>{item}</li>
                             ))}
                           </ul>

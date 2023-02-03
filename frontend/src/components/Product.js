@@ -6,7 +6,7 @@ const Product = ({ product }) => {
   return (
     <div className="relative">
       <div className="relative w-full min-h-[10rem] overflow-hidden rounded-lg">
-        <Link to={`/product/${product._id}`}>
+        <Link to={`/api/products/${product._id}`}>
           <img
             src={product.cover}
             alt=""
@@ -18,7 +18,7 @@ const Product = ({ product }) => {
         <div className="flex flex-col gap-3">
           {/* product title */}
           <Link
-            to={`/product/${product._id}`}
+            to={`/api/products/${product._id}`}
             className="text-[14px] overflow-ellipsis overflow-hidden whitespace-nowrap link link-underline link-underline-black text-black"
             title={product.name}
           >
